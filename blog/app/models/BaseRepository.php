@@ -2,13 +2,13 @@
 
 abstract class BaseRepository extends \Nette\Object {
 	/**
-	 * Databaze
+	 * Database
 	 * @var Nette\Database\Connection
 	 */
 	protected $connection;
 	
 	/**
-	 * Nazev tabulky
+	 * Table name
 	 * @var string
 	 */
 	protected $table;
@@ -22,10 +22,19 @@ abstract class BaseRepository extends \Nette\Object {
 		return $this->connection->table($this->table);
 	}
 	
+	/**
+	 * Returns all results
+	 * @return Nette\Database\Table
+	 */
 	public function findAll() {
 		return $this->getTable();
 	}
 	
+	/**
+	 * Returns all results that meet the given critera
+	 * @param array $criteria
+	 * @return Nette\Database\Table
+	 */
 	public function findBy(array $criteria) {
 		return $this->getTable()->where($criteria);
 	}
