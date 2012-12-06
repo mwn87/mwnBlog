@@ -6,6 +6,10 @@
 #
 common:
 	parameters:
+		database:
+			dsn: 'mysql:host=localhost;dbname=mwnblog'
+			user: mwnblog
+			password: mwnblog
 
 	php:
 		date.timezone: Europe/Prague
@@ -15,11 +19,6 @@ common:
 		application:
 			errorPresenter: Error
 
-		database:
-			dsn: 'mysql:host=localhost;dbname=test'
-			user:
-			password:
-
 		session:
 			expiration: 14 days
 
@@ -27,6 +26,14 @@ common:
 	services:
 		routerFactory: RouterFactory
 		router: @routerFactory::createRouter
+		
+		database:
+			class: Nette\Database\Connection
+			arguments: [%database.dsn%, %database.user%, %database.password%]
+
+		repository:
+			class: RepositoryRouter
+			arguments: [@database]
 
 
 	factories:
