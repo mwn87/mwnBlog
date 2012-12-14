@@ -1,0 +1,37 @@
+{block content}
+<article class="module width_full">
+	<header><h3>Articles</h3></header>
+	<div class="tab_container">
+		<table class="tablesorter" cellspacing="0">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Slug</th>
+					<th>Category</th>
+					<th>Tags</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{if $items->count()}
+				{foreach $items as $item}
+				<tr>
+					<td>{$item->name}</td>
+					<td>{$item->slug}</td>
+					<td>{$item->categories_id ? $item->ref('categories')->name : 'No Category'}</td>
+					<td>{$item->tags|truncate:25}</td>
+					<td>
+						<a href="{plink Article:edit, item => $item->id}"><img src="/medialoot_admin/images/icn_edit.png" title="Edit"></a>
+						<a href="{plink delete!, item => $item->id}"><img src="/medialoot_admin/images/icn_trash.png" title="Trash"></a>
+					</td>
+				</tr>
+				{/foreach}
+				{else}
+				<tr>
+					<td colspan="5">No entries found.</td>
+				</tr>
+				{/if}
+			</tbody>
+		</table>
+	</div>
+</article>

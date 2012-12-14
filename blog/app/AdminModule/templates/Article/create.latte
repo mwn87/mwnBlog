@@ -1,0 +1,37 @@
+{block content}
+<article class="module width_full">
+	<header><h3>Create New Article</h3></header>
+	{form updateForm}
+	<div class="module_content">
+		<fieldset>
+			{label name /}
+			{input name}
+		</fieldset>
+		<fieldset style="width:49%; float:left; margin-right: 24px;">
+			{label category /}
+			{input category}
+		</fieldset>
+		<fieldset style="width:49%; float:left;">
+			{label published /}
+			{input published}
+		</fieldset><div class="clear"></div>
+		<fieldset style="width:49%; float:left; margin-right: 24px;">
+			{label perex /}
+			{input perex}
+		</fieldset>
+		<fieldset style="width:49%; float:left;">
+			{label tags /}
+			{input tags}
+		</fieldset><div class="clear"></div>
+		<fieldset>
+			{label text /}
+			{input text}
+		</fieldset>
+	</div>
+	<footer>
+		<div class="submit_link">
+			{input submit}
+		</div>
+	</footer>
+	{/form}
+</article>
