@@ -38,4 +38,22 @@ abstract class BaseRepository extends \Nette\Object {
 	public function findBy(array $criteria) {
 		return $this->getTable()->where($criteria);
 	}
+	
+	/**
+	 * Returns one result that meets the given criteria
+	 * @param array $criteria
+	 * @return type
+	 */
+	public function findOneBy(array $criteria) {
+		return $this->getTable()->where($criteria)->fetch();
+	}
+	
+	/**
+	 * Inserts data into the table
+	 * @param array $data
+	 * @return Nette\Database\Table\ActiveRow inserted row
+	 */
+	public function insert(array $data) {
+		return $this->getTable()->insert($data);
+	}
 }
