@@ -6,10 +6,9 @@
 #
 common:
 	parameters:
-		database:
-			dsn: 'mysql:host=localhost;dbname=mwnblog'
-			user: mwnblog
-			password: mwnblog
+		authenticator:
+			emailAsUsername: true
+			salt: 'few%$#24fdsfapDF4562aqf$%*(@#'
 
 	php:
 		date.timezone: Europe/Prague
@@ -21,19 +20,27 @@ common:
 
 		session:
 			expiration: 14 days
+		
+		database:
+			default:
+				dsn: 'mysql:host=localhost;dbname=mwnblog'
+				user: mwnblog
+				password: mwnblog
+				debugger: true
 
 
 	services:
 		routerFactory: RouterFactory
 		router: @routerFactory::createRouter
-		
-		database:
-			class: Nette\Database\Connection
-			arguments: [%database.dsn%, %database.user%, %database.password%]
+		database: @nette.database.default
 
 		repository:
 			class: RepositoryRouter
 			arguments: [@database]
+
+		authenticator:
+			class: Authenticator
+			arguments: [@repository, %authenticator%, @user]
 
 
 	factories:
