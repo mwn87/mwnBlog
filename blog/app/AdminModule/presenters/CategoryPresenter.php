@@ -62,10 +62,15 @@ class CategoryPresenter extends BasePresenter {
 	public function updateFormSuccess(\Nette\Application\UI\Form $form) {
 		$values = $form->getValues();
 		
+		$data['name'] = $values->name;
+		$data['description'] = $values->description;
+		$data['tags'] = $values->tags;
+		$data['slug'] = $values->name == $this->item->name ? $this->item->slug : \RepositoryUtils::slug($this->context->repository->category, $values->name, $this->item ? $this->item->id : null);
+		
 		if($this->item) {
-			$this->item->update((array) $values);
+			$this->item->update($data);
 		} else {
-			$this->context->repository->category->insert((array) $values);
+			$this->context->repository->category->insert($data);
 		}
 		
 		$this->flashMessage('Category has been successfully saved');
