@@ -85,9 +85,9 @@
 	
 	<section id="main" class="column">
 		{foreach $flashes as $flash}
-		<div class="alert_{$flash->type}">
+		<h4 class="alert_{$flash->type}">
 			{$flash->message}
-		</div>
+		</h4>
 		{/foreach}
 		{include #content}
 		<div class="spacer"></div>
