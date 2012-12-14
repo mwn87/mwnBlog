@@ -1,0 +1,25 @@
+{block content}
+<article class="module width_full">
+	<header><h3>Create New Category</h3></header>
+	{form updateForm}
+	<div class="module_content">
+		<fieldset>
+			{label name /}
+			{input name}
+		</fieldset>
+		<fieldset>
+			{label description /}
+			{input description}
+		</fieldset>
+		<fieldset>
+			{label tags /}
+			{input tags}
+		</fieldset>
+	</div>
+	<footer>
+		<div class="submit_link">
+			{input submit}
+		</div>
+	</footer>
+	{/form}
+</article>
