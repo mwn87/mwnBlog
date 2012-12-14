@@ -56,4 +56,16 @@ abstract class BaseRepository extends \Nette\Object {
 	public function insert(array $data) {
 		return $this->getTable()->insert($data);
 	}
+	
+	/**
+	 * Fetches pairs as an associative array
+	 * 
+	 * @param type $key
+	 * @param type $value
+	 * 
+	 * @return array
+	 */
+	public function fetchPairs($key, $value) {
+		return $this->getTable()->fetchPairs($key, $value);
+	}
 }
